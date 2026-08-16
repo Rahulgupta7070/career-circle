@@ -17,12 +17,12 @@ public class Division {
         try {
             int result = num1 / num2;
             System.out.println("Result = " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero");
+        } finally {
+            System.out.println("Program Ends");
         }
-        catch (ArithmeticException e) {
-            System.out.println("Cannot divide by zero.");
-        }
-        finally{
-        System.out.println("Program continues...");
-        }
+
+        sc.close();
     }
 }
