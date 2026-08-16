@@ -1,9 +1,9 @@
 package Array;
 
 public class Q03_ArraySum {
-     public static void main(String[] args) {
+    public static void main(String[] args) {
 
-        int[] arr = {10, 20, 30, 40, 50};
+        int[] arr = { 10, 20, 30, 40, 50 };
 
         int sum = 0;
 
@@ -12,5 +12,6 @@ public class Q03_ArraySum {
         }
 
         System.out.println("Sum: " + sum);
+        System.out.println("Hii this is my new setup");
     }
 }
