@@ -12,5 +12,6 @@ public class Q03_ArraySum {
         }
 
         System.out.println("Sum: " + sum);
+        System.out.println("This is my first setup");
     }
 }
