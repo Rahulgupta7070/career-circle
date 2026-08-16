@@ -1,5 +1,3 @@
-package Array;
-
 public class Q02_SmallestElement {
      public static void main(String[] args) {
 
