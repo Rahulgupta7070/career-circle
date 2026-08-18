@@ -1,4 +1,4 @@
-package Concepts;
+package MethodOverloading;
 
 public class MethodOverloading {
 	
