@@ -12,7 +12,7 @@ public class Digit {
 
         int c=a+b;
         System.out.println("The Final Result is:"+c);
-        
+
 
     }
 }
