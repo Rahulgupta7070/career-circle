@@ -1,0 +1,7 @@
+package Day5.Polymorphism;
+
+public class Animal {
+    public void sound() {
+        System.out.println("Animal sound");
+    }
+}
