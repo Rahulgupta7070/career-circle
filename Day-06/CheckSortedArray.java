@@ -12,7 +12,7 @@ class CheckSortedArray {
         if (isSorted(sortedArray)) {
             System.out.println("Array is sorted");
         } else 
-            System.out.println("Array is Not Sorted: ");
+            System.out.println("Array is NOT Sorted");
     }
 }
 /*

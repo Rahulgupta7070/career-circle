@@ -4,7 +4,6 @@ class LeftRotate {
     public static void main(String[] args) {
         int [] arr = {10, 20, 30, 40, 50};
         int k = 2;
-
         k=k%arr.length;
         for(int j=0; j<k; j++) {
             int first = arr[0];
