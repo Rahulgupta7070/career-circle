@@ -6,10 +6,10 @@ class SumOfDigits {
         System.out.print("Enter the number: ");
         int num = sc.nextInt();
         int sum = 0;
-        while(num!=0) {
+        while(num>0) {
             sum = sum+num%10;
             num = num/10;
         }
-        System.out.println("Sum: " + sum);
+        System.out.println("Sum = " + sum);
     }
 }
