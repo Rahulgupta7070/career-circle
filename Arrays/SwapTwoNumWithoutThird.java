@@ -1,4 +1,4 @@
-package Assignments;
+package Arrays;
 
 public class SwapTwoNumWithoutThird {
     public static void main(String[] args) {

@@ -21,7 +21,7 @@ public class Frequency {
 
     public static void main(String[] args) {
 
-        int arr[] = { 2, 1, 5, 4, 4, 4, 2, 1, 1, 1 };
+        int arr[] = { 2, 1, 5, 5, 1, 1, 1 };
         findNumber(arr);
     }
 }
