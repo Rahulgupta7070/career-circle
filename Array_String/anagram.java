@@ -10,12 +10,12 @@ public class anagram {
             return false;
         }
 
-        int[] arr = new int[26];
+        int[] freq = new int[26];
         for(int i=0; i<s1.length(); i++) {
-            arr[s1.charAt(i)-'a']++;
-            arr[s1.charAt(i)-'a']--;
+            freq[s1.charAt(i)-'a']++;
+            freq[s2.charAt(i)-'a']--;
         }
-        for(int count : arr) {
+        for(int count : freq) {
             if(count!=0) {
                 return false;
             }
