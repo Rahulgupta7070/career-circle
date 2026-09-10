@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration | Student Management System</title>
+
+
+    <!-- =========================
+         CSS START
+    ========================== -->
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #1e1b4b,
+                    #312e81,
+                    #4c1d95
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 30px;
+
+            color: #1e293b;
+        }
+
+
+        /* Main wrapper */
+
+        .page {
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            display: grid;
+
+            grid-template-columns: 0.9fr 1.1fr;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* =========================
+           LEFT SECTION
+        ========================== */
+
+        .left-section {
+
+            position: relative;
+
+            padding: 55px 45px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #4f46e5,
+                    #7c3aed,
+                    #9333ea
+                );
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .left-section::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+
+            height: 220px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            top: -70px;
+
+            left: -70px;
+        }
+
+
+        .left-section::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+
+            height: 180px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            bottom: -60px;
+
+            right: -50px;
+        }
+
+
+        .logo {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 15px;
+
+            background: rgba(255, 255, 255, 0.18);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 28px;
+
+            margin-bottom: 25px;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        .left-section h1 {
+
+            font-size: 38px;
+
+            line-height: 1.15;
+
+            margin-bottom: 18px;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        .left-section p {
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            color: #ede9fe;
+
+            margin-bottom: 35px;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        .features {
+
+            list-style: none;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        .features li {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 18px;
+
+            font-size: 14px;
+
+            color: #f5f3ff;
+        }
+
+
+        .check {
+
+            width: 28px;
+
+            height: 28px;
+
+            background: rgba(255, 255, 255, 0.16);
+
+            border-radius: 50%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           RIGHT SECTION
+        ========================== */
+
+        .right-section {
+
+            padding: 45px 50px;
+
+            background: #ffffff;
+        }
+
+
+        .form-heading {
+
+            margin-bottom: 30px;
+        }
+
+
+        .form-heading h2 {
+
+            font-size: 28px;
+
+            color: #0f172a;
+
+            margin-bottom: 7px;
+        }
+
+
+        .form-heading p {
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* Form */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+
+        .form-group {
+
+            position: relative;
+        }
+
+
+        .full {
+
+            grid-column: 1 / -1;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            color: #334155;
+
+            margin-bottom: 8px;
+        }
+
+
+        .required {
+
+            color: #ef4444;
+        }
+
+
+        .input-wrapper {
+
+            position: relative;
+        }
+
+
+        .input-icon {
+
+            position: absolute;
+
+            left: 14px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 16px;
+
+            color: #94a3b8;
+
+            pointer-events: none;
+        }
+
+
+        input,
+        select {
+
+            width: 100%;
+
+            height: 48px;
+
+            border: 1px solid #dbe2ea;
+
+            border-radius: 10px;
+
+            background: #f8fafc;
+
+            padding: 0 14px 0 42px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            color: #1e293b;
+
+            transition: all 0.25s ease;
+        }
+
+
+        select {
+
+            padding-left: 42px;
+
+            cursor: pointer;
+        }
+
+
+        input:focus,
+        select:focus {
+
+            background: #ffffff;
+
+            border-color: #6366f1;
+
+            box-shadow:
+                0 0 0 4px rgba(99, 102, 241, 0.10);
+        }
+
+
+        input::placeholder {
+
+            color: #a1aab8;
+        }
+
+
+        /* Name counter */
+
+        .name-bottom {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 5px;
+        }
+
+
+        .hint {
+
+            font-size: 11px;
+
+            color: #94a3b8;
+        }
+
+
+        .counter {
+
+            font-size: 11px;
+
+            color: #94a3b8;
+        }
+
+
+        /* Gender */
+
+        .gender-options {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+        }
+
+
+        .gender-option input {
+
+            display: none;
+        }
+
+
+        .gender-option label {
+
+            height: 48px;
+
+            border: 1px solid #dbe2ea;
+
+            background: #f8fafc;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            cursor: pointer;
+
+            color: #475569;
+
+            transition: 0.25s;
+
+            margin: 0;
+        }
+
+
+        .gender-option label:hover {
+
+            border-color: #818cf8;
+
+            background: #eef2ff;
+        }
+
+
+        .gender-option input:checked + label {
+
+            color: #4f46e5;
+
+            background: #eef2ff;
+
+            border-color: #6366f1;
+
+            font-weight: bold;
+        }
+
+
+        /* Error message */
+
+        .error {
+
+            color: #ef4444;
+
+            font-size: 11px;
+
+            margin-top: 5px;
+
+            display: none;
+        }
+
+
+        .form-group.invalid input,
+        .form-group.invalid select {
+
+            border-color: #ef4444;
+
+            background: #fff7f7;
+        }
+
+
+        .form-group.invalid .error {
+
+            display: block;
+        }
+
+
+        /* Submit button */
+
+        .submit-btn {
+
+            grid-column: 1 / -1;
+
+            height: 52px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #7c3aed
+                );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            margin-top: 5px;
+
+            transition: all 0.25s ease;
+
+            box-shadow:
+                0 8px 20px rgba(79, 70, 229, 0.25);
+        }
+
+
+        .submit-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(79, 70, 229, 0.35);
+        }
+
+
+        .submit-btn:active {
+
+            transform: translateY(0);
+        }
+
+
+        .submit-btn.loading {
+
+            opacity: 0.75;
+
+            cursor: not-allowed;
+        }
+
+
+        .footer {
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            font-size: 11px;
+
+            color: #94a3b8;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 850px) {
+
+            .page {
+
+                grid-template-columns: 1fr;
+            }
+
+            .left-section {
+
+                padding: 35px;
+            }
+
+            .left-section h1 {
+
+                font-size: 30px;
+            }
+
+            .right-section {
+
+                padding: 35px;
+            }
+        }
+
+
+        @media (max-width: 550px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+
+                grid-column: auto;
+            }
+
+            .submit-btn {
+
+                grid-column: auto;
+            }
+
+            .right-section {
+
+                padding: 25px;
+            }
+
+            .left-section {
+
+                padding: 30px 25px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="page">
+
+
+        <!-- =========================
+             LEFT SIDE
+        ========================== -->
+
+        <div class="left-section">
+
+            <div class="logo">
+                🎓
+            </div>
+
+
+            <h1>
+                Student<br>
+                Management
+            </h1>
+
+
+            <p>
+                Register your details and become
+                part of our student management
+                system.
+            </p>
+
+
+            <ul class="features">
+
+                <li>
+
+                    <span class="check">✓</span>
+
+                    Simple and secure registration
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">✓</span>
+
+                    Easy student information management
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">✓</span>
+
+                    Java Full Stack application
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">✓</span>
+
+                    Fast and reliable processing
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- =========================
+             RIGHT SIDE
+        ========================== -->
+
+        <div class="right-section">
+
+
+            <div class="form-heading">
+
+                <h2>
+                    Create Student Profile
+                </h2>
+
+                <p>
+                    Enter your information carefully
+                    to complete registration.
+                </p>
+
+            </div>
+
+
+            <!--
+                IMPORTANT:
+
+                action="ShivamServlet"
+
+                This must match your web.xml
+                URL pattern.
+
+                method="post"
+
+                Sends form data using POST.
+            -->
+
+            <form id="studentForm"
+                  action="ShivamServlet"
+                  method="post">
+
+
+                <div class="form-grid">
+
+
+                    <!-- =====================
+                         STUDENT NAME
+                    ====================== -->
+
+                    <div class="form-group full">
+
+                        <label>
+                            Student Name
+                            <span class="required">*</span>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                👤
+                            </span>
+
+                            <input
+                                type="text"
+                                id="studentName"
+                                name="studentName"
+                                placeholder="Enter your full name"
+                                maxlength="50"
+                                autocomplete="name">
+
+                        </div>
+
+
+                        <div class="name-bottom">
+
+                            <span class="hint">
+                                Enter your full name
+                            </span>
+
+                            <span class="counter"
+                                  id="nameCounter">
+                                0/50
+                            </span>
+
+                        </div>
+
+
+                        <div class="error">
+                            Please enter your name.
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================
+                         ROLL NUMBER
+                    ====================== -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Roll Number
+                            <span class="required">*</span>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                #️⃣
+                            </span>
+
+                            <input
+                                type="text"
+                                id="rollNumber"
+                                name="rollNumber"
+                                placeholder="e.g. 101">
+
+                        </div>
+
+
+                        <div class="error">
+                            Please enter your roll number.
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================
+                         EMAIL
+                    ====================== -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Email Address
+                            <span class="required">*</span>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ✉️
+                            </span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="example@gmail.com"
+                                autocomplete="email">
+
+                        </div>
+
+
+                        <div class="error">
+                            Please enter a valid email.
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================
+                         AGE
+                    ====================== -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Age
+                            <span class="required">*</span>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🎂
+                            </span>
+
+                            <input
+                                type="number"
+                                id="age"
+                                name="age"
+                                placeholder="18 or above"
+                                min="18"
+                                max="100">
+
+                        </div>
+
+
+                        <div class="error">
+                            Age must be 18 or above.
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================
+                         COURSE
+                    ====================== -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Course
+                            <span class="required">*</span>
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                📚
+                            </span>
+
+                            <select
+                                id="course"
+                                name="course">
+
+                                <option value="">
+                                    Select your course
+                                </option>
+
+                                <option value="Java Full Stack">
+                                    Java Full Stack
+                                </option>
+
+                                <option value="Java">
+                                    Java
+                                </option>
+
+                                <option value="Web Development">
+                                    Web Development
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="error">
+                            Please select a course.
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================
+                         GENDER
+                    ====================== -->
+
+                    <div class="form-group full">
+
+                        <label>
+                            Gender
+                            <span class="required">*</span>
+                        </label>
+
+
+                        <div class="gender-options">
+
+
+                            <div class="gender-option">
+
+                                <input
+                                    type="radio"
+                                    id="male"
+                                    name="gender"
+                                    value="Male">
+
+                                <label for="male">
+                                    👨 Male
+                                </label>
+
+                            </div>
+
+
+                            <div class="gender-option">
+
+                                <input
+                                    type="radio"
+                                    id="female"
+                                    name="gender"
+                                    value="Female">
+
+                                <label for="female">
+                                    👩 Female
+                                </label>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="error"
+                             id="genderError">
+                            Please select your gender.
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================
+                         SUBMIT
+                    ====================== -->
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                        id="submitBtn">
+
+                        Register Student
+
+                    </button>
+
+
+                </div>
+
+            </form>
+
+
+            <div class="footer">
+
+                Student Management System • Java Servlet & JSP
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT START
+    ========================== -->
+
+    <script>
+
+
+        // =========================================
+        // GET FORM ELEMENTS
+        // =========================================
+
+        const form =
+            document.getElementById("studentForm");
+
+        const studentName =
+            document.getElementById("studentName");
+
+        const rollNumber =
+            document.getElementById("rollNumber");
+
+        const email =
+            document.getElementById("email");
+
+        const age =
+            document.getElementById("age");
+
+        const course =
+            document.getElementById("course");
+
+        const submitBtn =
+            document.getElementById("submitBtn");
+
+
+        // =========================================
+        // NAME CHARACTER COUNTER
+        // =========================================
+
+        studentName.addEventListener(
+            "input",
+            function () {
+
+                document.getElementById(
+                    "nameCounter"
+                ).textContent =
+                    studentName.value.length + "/50";
+
+            }
+        );
+
+
+        // =========================================
+        // VALIDATE NAME
+        // =========================================
+
+        function validateName() {
+
+            const group =
+                studentName.closest(".form-group");
+
+            if (studentName.value.trim() === "") {
+
+                group.classList.add("invalid");
+
+                return false;
+
+            }
+
+            group.classList.remove("invalid");
+
+            return true;
+        }
+
+
+        // =========================================
+        // VALIDATE ROLL NUMBER
+        // =========================================
+
+        function validateRollNumber() {
+
+            const group =
+                rollNumber.closest(".form-group");
+
+            if (rollNumber.value.trim() === "") {
+
+                group.classList.add("invalid");
+
+                return false;
+
+            }
+
+            group.classList.remove("invalid");
+
+            return true;
+        }
+
+
+        // =========================================
+        // VALIDATE EMAIL
+        // =========================================
+
+        function validateEmail() {
+
+            const group =
+                email.closest(".form-group");
+
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            if (
+                email.value.trim() === "" ||
+                !emailPattern.test(email.value)
+            ) {
+
+                group.classList.add("invalid");
+
+                return false;
+
+            }
+
+            group.classList.remove("invalid");
+
+            return true;
+        }
+
+
+        // =========================================
+        // VALIDATE AGE
+        // =========================================
+
+        function validateAge() {
+
+            const group =
+                age.closest(".form-group");
+
+            const ageValue =
+                Number(age.value);
+
+
+            if (
+                age.value === "" ||
+                ageValue < 18 ||
+                ageValue > 100
+            ) {
+
+                group.classList.add("invalid");
+
+                return false;
+
+            }
+
+            group.classList.remove("invalid");
+
+            return true;
+        }
+
+
+        // =========================================
+        // VALIDATE COURSE
+        // =========================================
+
+        function validateCourse() {
+
+            const group =
+                course.closest(".form-group");
+
+
+            if (course.value === "") {
+
+                group.classList.add("invalid");
+
+                return false;
+
+            }
+
+            group.classList.remove("invalid");
+
+            return true;
+        }
+
+
+        // =========================================
+        // VALIDATE GENDER
+        // =========================================
+
+        function validateGender() {
+
+            const gender =
+                document.querySelector(
+                    'input[name="gender"]:checked'
+                );
+
+            const error =
+                document.getElementById(
+                    "genderError"
+                );
+
+
+            if (!gender) {
+
+                error.style.display = "block";
+
+                return false;
+
+            }
+
+            error.style.display = "none";
+
+            return true;
+        }
+
+
+        // =========================================
+        // FORM SUBMIT
+        // =========================================
+
+        form.addEventListener(
+            "submit",
+            function (event) {
+
+
+                /*
+                 * JavaScript browser-side validation
+                 * pehle chalegi.
+                 */
+
+                const nameValid =
+                    validateName();
+
+                const rollValid =
+                    validateRollNumber();
+
+                const emailValid =
+                    validateEmail();
+
+                const ageValid =
+                    validateAge();
+
+                const courseValid =
+                    validateCourse();
+
+                const genderValid =
+                    validateGender();
+
+
+                /*
+                 * Agar koi validation fail hui,
+                 * form Servlet ko nahi bhejenge.
+                 */
+
+                if (
+                    !nameValid ||
+                    !rollValid ||
+                    !emailValid ||
+                    !ageValid ||
+                    !courseValid ||
+                    !genderValid
+                ) {
+
+                    event.preventDefault();
+
+                    return;
+                }
+
+
+                /*
+                 * Sab valid hai.
+                 *
+                 * Ab normal form submission hogi:
+                 *
+                 * POST → ShivamServlet
+                 */
+
+                submitBtn.textContent =
+                    "Registering...";
+
+                submitBtn.classList.add(
+                    "loading"
+                );
+
+                submitBtn.disabled = true;
+
+            }
+        );
+
+
+        // =========================================
+        // LIVE VALIDATION
+        // =========================================
+
+        studentName.addEventListener(
+            "blur",
+            validateName
+        );
+
+        rollNumber.addEventListener(
+            "blur",
+            validateRollNumber
+        );
+
+        email.addEventListener(
+            "blur",
+            validateEmail
+        );
+
+        age.addEventListener(
+            "blur",
+            validateAge
+        );
+
+        course.addEventListener(
+            "change",
+            validateCourse
+        );
+
+
+    </script>
+
+</body>
+
+</html>
